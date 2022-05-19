@@ -1,0 +1,162 @@
+<section id="postMaker" class="w-100">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8 text-center">
+        <div class="text">
+          <div class="bg-primary w-75 mx-auto rounded d-lg-block d-none">
+            <h1 class="text-white font-weight-lighter display-3">Post maker</h1>
+          </div>
+          <div class="bg-primary mx-auto rounded d-lg-none d-block">
+            <h1 class="text-white font-weight-lighter font-6x">Post maker</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w-100">
+  <div class="container">
+    <h2 class="font-weight-light text-center mb-7">Nuevo post</h2>
+    <form #postForm="ngForm" class="row align-items-center justify-content-center">
+      <div class="col-12">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="postService.selectedPost._id">
+        <input type="hidden" name="fecha" #fecha="ngModel" [(ngModel)]="postService.selectedPost.fecha">
+        <input type="hidden" name="autor" #autor="ngModel" [(ngModel)]="postService.selectedPost.autor">
+      </div>
+      <div class="col-md-6 col-12 my-4 text-center">
+        <p class="font-weight-light font-1_5x">Titulo</p>
+        <div class="w-100">
+          <input type="text" name="titulo" id="titulo" required class="form-ctrl w-100 py-1" #titulo="ngModel"
+            [(ngModel)]="postService.selectedPost.titulo">
+        </div>
+      </div>
+      <div class="col-md-6 col-12 my-4 text-center">
+        <p class="font-weight-light font-1_5x">Imagen para cabecera (URL)</p>
+        <div class="w-100">
+          <input type="text" name="imgCabecera" id="imgCabecera" required class="form-ctrl w-100 py-1"
+            #imgCabecera="ngModel" [(ngModel)]="postService.selectedPost.imgCabecera">
+        </div>
+      </div>
+      <div class="col-12 my-4 text-center">
+        <textarea name="contenido" id="contenido" rows="10" required class="form-ctrl w-100" #contenido="ngModel"
+          [(ngModel)]="postService.selectedPost.contenido"></textarea>
+      </div>
+      <div class="col-12">
+        <p class="font-0_85x font-weight-light">Escrito por: 
+          <span class="text-danger">{{ postService.selectedPost.autor }}</span> 
+          el <span> {{ postService.selectedPost.fecha }} </span>
+        </p>
+      </div>
+
+      <div class="row" *ngIf="adm == false">
+        <div class="col-6 text-right">
+          <button type="button" class="btn btn-success mx-2" data-toggle="modal" data-target="#question">
+            Guardar
+          </button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-secondary mx-2" (click)="resetForm(postForm)">Limpiar</button>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="question" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Post Maker</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Estas a punto de publicar una nueva entrada. ¿Estas seguro de enviarla?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-info" (click)="addPost(postForm)" data-dismiss="modal">Sí</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="mt-10">
+  <div class="container">
+    <h2 class="font-weight-light text-center mb-7">Posts escritos</h2>
+    <div *ngIf="adm == true; then _admin else _noAdmin"></div>
+
+    <ng-template #_admin>
+      <div *ngFor="let post of postService.posts">
+        <div class="row align-items-center justify-content-center animated fadeIn">
+          <div class="col-lg-2 col-6">
+            <input type="hidden" name="_id" value="{{ post._id }}">
+            <input type="hidden" name="autor" value="{{ post.autor }}">
+            <p class="text-primary font-weight-light font-1_5x">{{ post.titulo }}</p>
+          </div>
+          <div class="col-lg-3 col-6">
+            <p class="font-weight-light">{{ post.fecha }}</p>
+          </div>
+          <div class="col-lg-5 col-12">
+            <textarea name="txtArea" rows="3" maxlength="100" class="w-100" disabled>{{ post.contenido }}</textarea>
+          </div>
+          <div class="col-lg-1 col-6 text-center">
+            <button class="btn icon" (click)="msj = 'Se pueden editar los datos'; t = 'danger'; editPost(post);">
+              <fa-icon class="font-3x" [icon]="faEdit"></fa-icon>
+            </button>
+          </div>
+          <div class="col-lg-1 col-6 text-center">
+            <button class="btn icon" (click)="deletePost(post._id)">
+              <fa-icon class="font-3x" [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+          <hr class="w-75">
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #_noAdmin>
+      <div *ngFor="let post of postService.posts">
+        <div *ngIf="post.autor == user" class="row align-items-center justify-content-center animated fadeIn">
+          <div class="col-lg-2 col-6">
+            <input type="hidden" name="_id" value="{{ post._id }}">
+            <input type="hidden" name="autor" value="{{ post.autor }}">
+            <p class="font-weight-light text-center font-1_5x m-0">Titulo:</p>
+            <p class="text-primary text-center font-weight-light font-1_5x">{{ post.titulo }}</p>
+          </div>
+          <div class="col-lg-3 col-6">
+            <p class="font-weight-light text-center font-1_5x m-0">Fecha:</p>
+            <p class="font-weight-light">{{ post.fecha }}</p>
+          </div>
+          <div class="col-lg-5 col-12">
+            <p class="font-weight-light text-center font-1_5x m-0">Cuerpo:</p>
+            <textarea name="txtArea" rows="3" maxlength="100" class="w-100" disabled>{{ post.contenido }}</textarea>
+          </div>
+          <div class="col-lg-1 col-6 text-center">
+            <button class="btn icon" (click)="msj = 'Se pueden editar los datos'; t = 'danger'; editPost(post);">
+              <fa-icon class="font-3x" [icon]="faEdit"></fa-icon>
+            </button>
+          </div>
+          <div class="col-lg-1 col-6 text-center">
+            <button class="btn icon" (click)="deletePost(post._id)">
+              <fa-icon class="font-3x" [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+          <hr class="w-75">
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
+
+<div id="ftco-loader" class="show fullscreen">
+  <svg class="circular" width="48px" height="48px">
+    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+  </svg>
+</div>

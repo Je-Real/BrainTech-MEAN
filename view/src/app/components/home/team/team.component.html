@@ -1,0 +1,143 @@
+<section class="hero-wrap pt-5" style="background-image: url(assets/images/bg-code.jpg);"
+	data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row description align-items-center justify-content-center">
+			<div class="col-md-8 text-center">
+				<div class="text">
+					<div class="bg-primary w-75 mx-auto rounded d-lg-block d-none">
+						<h1 class="text-white font-weight-lighter display-3">¡Hola {{user}}!</h1>
+					</div>
+					<div class="bg-primary mx-auto rounded d-lg-none d-block">
+						<h1 class="text-white font-weight-lighter font-6x">¡Hola {{user}}!</h1>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded">
+						<div *ngIf="adm == true; then _Adm else _noAdm"></div>
+						<ng-template #_Adm>
+							<h3 class="text-black font-weight-lighter mb-5 d-lg-block d-none">
+								Acciones de Administrador
+							</h3>
+							<h3 class="text-black font-weight-lighter mb-5 font-4x d-lg-none d-block">
+								Acciones de Administrador
+							</h3>
+						</ng-template>
+						<ng-template #_noAdm>
+							<h3 class="text-black font-weight-lighter mb-5 d-lg-block d-none">
+								¿Qué deseas hacer?
+							</h3>
+							<h3 class="text-black font-weight-lighter mb-5 font-4x d-lg-none d-block">
+								¿Qué deseas hacer?
+							</h3>
+						</ng-template>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Cuerpo -->
+<section class="my-7">
+	<div class="overlay"></div>
+	<div class="container">
+
+		<div *ngIf="adm == true; then _Admin else noAdmin"></div>
+		<ng-template #_Admin>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-12 my-4">
+					<div class="bg-success w-100 mx-auto rounded">
+						<h3 class="text-white text-center">Usuarios</h3>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded py-3">
+						<p class="mx-4 text-justify">
+							Mira la lista de todos los usuarios que existen. 
+							Puedes eliminar usuarios.
+						</p>
+					</div>
+					<div class="text-center">
+						<button class="btn btn-outline-danger">
+							<p class="m-0 p-0 font-1_5x" routerLink="/adminUsers">¡Ir a usuarios!</p>
+						</button>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-12 my-4">
+					<div class="bg-success w-100 mx-auto rounded">
+						<h3 class="text-white text-center">Posts</h3>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded py-3">
+						<p class="mx-4 text-justify">
+							Tienes accesibilidad a todos los posts que hay en el blog, de 
+							cualquier usuario del equipo. Los puedes ver y eliminar
+						</p>
+					</div>
+					<div class="text-center">
+						<button class="btn btn-outline-danger">
+							<p class="m-0 p-0 font-1_5x" routerLink="/maker">¡A los posts!</p>
+						</button>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+
+		<ng-template #noAdmin>
+			<div class="row justify-content-center">
+				<div class="col-lg-4 col-md-6 col-12 my-4">
+					<div class="bg-success w-100 mx-auto rounded">
+						<h3 class="text-white text-center">Hacer un nuevo post</h3>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded py-3">
+						<p class="mx-4 text-justify">
+							Una nueva plantilla lista para subir al Blog. <br>
+							Inspirarte tanto como puedas, expresate, y comparte con las personas
+							esas historias tuyas.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 my-4">
+					<div class="bg-success w-100 mx-auto rounded">
+						<h3 class="text-white text-center">Edita tu post</h3>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded py-3">
+						<p class="mx-4 text-justify">
+							Edita tu post. Debajo encontraras una lista con tus posts, haz clic en el icono del
+							lápiz y ¡presto! <br> Listo para editar.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 my-4">
+					<div class="bg-success w-100 mx-auto rounded">
+						<h3 class="text-white text-center">Elimina posts</h3>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded py-3">
+						<p class="mx-4 text-justify">
+							Elimina posts que quieras. Debes de tener un motivo para eso 😉. Debajo encontraras 
+							una lista con tus posts, haz clic en el icono de cruz y estará preparado borrado en
+							un santiamén.
+						</p>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<button class="btn btn-outline-danger">
+						<p class="m-0 p-0 font-3x" routerLink="/maker">¡Vamos!</p>
+					</button>
+				</div>
+			</div>
+		</ng-template>
+		
+	</div>
+
+</section>
+<!-- - - - - -nosotros- - - - -  -->
+
+<!-- - - - - -blog- - - - -  -->
+
+<div id="ftco-loader" class="show fullscreen">
+	<svg class="circular" width="48px" height="48px">
+		<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	</svg>
+</div>

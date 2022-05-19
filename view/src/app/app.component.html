@@ -1,0 +1,83 @@
+<div id="padding d-md-none d-block"></div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets/images/braintech-b.svg" width="45" height="auto" alt="logo"> BrainTech
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" 
+      aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="dropdown nav-item">
+          <a class="dropdown-toggle nav-link d-flex align-items-center icon pt-0" 
+            data-toggle="dropdown">
+            Inicio<b class="caret"></b>
+          </a>
+          <div class="dropdown-menu dropdown-menu-left">
+            <a class="dropdown-item font-0_95x" routerLink="/">
+              <i class="ion-ios-open mr-2 font-0_95x"></i> Home
+            </a>
+            <a *ngIf="type == '0' || type == '1'" routerLink="/teamHome" class="dropdown-item font-0_95x" >
+              <i class="ion-ios-open mr-2 font-0_95x"></i> Team
+              </a>
+            <a class="dropdown-item font-0_95x" routerLink="/blog">
+              <i class="ion-ios-open mr-2 font-0_95x"></i> Blog
+            </a>
+          </div>
+        </li>
+        <li class="nav-item" id="nosotros">
+          <a class="nav-link d-flex align-items-center" routerLink="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item" id="contacto">
+          <a class="nav-link d-flex align-items-center" routerLink="/contacto">Contacto</a>
+        </li>
+        <li class="nav-item" id="servicios">
+          <a class="nav-link d-flex align-items-center" routerLink="/servicios">Servicios</a>
+        </li>
+        <div *ngIf="sesionGetter(); then _on else _off"></div>
+        <ng-template #_on>
+          <div class="nav-item" id="login">
+            <a class="nav-link d-flex align-items-center" routerLink (click)="logout()">Log out</a>
+          </div>
+        </ng-template>
+        <ng-template #_off>
+          <div class="nav-item" id="login">
+            <a class="nav-link d-flex align-items-center" routerLink="/login">Log in</a>
+          </div>
+        </ng-template>
+        <!--<li class="dropdown nav-item">
+              <a href="#" class="dropdown-toggle nav-link icon d-flex align-items-center" 
+                data-toggle="dropdown">
+                <i class="ion-ios-apps mr-2"></i>Components<b class="caret"></b>
+              </a>
+              <div class="dropdown-menu dropdown-menu-left">
+                <a href="#" class="dropdown-item"><i class="ion-ios-apps mr-2"></i> All Components</a>
+                <a href="#" class="dropdown-item"><i class="ion-ios-document mr-2"></i> Documentation</a>
+              </div>
+            </li>
+	          <li class="nav-item cta"><a href="#" class="nav-link icon d-flex align-items-center">
+              <i class="ion-ios-cloud-download mr-2"></i> Download</a>
+            </li>-->
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="notify">
+  <div class='position-fixed align-items-center justify-content-center' id='alert'></div>
+</div>
+
+<router-outlet></router-outlet>
+
+<footer class="ftco-section ftco-section-2 mt-10">
+  <div class="col-md-12 text-center">
+    <p class="mb-0">
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;
+      {{ fecha }} BrainTech ❤ | <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    </p>
+  </div>
+</footer>
+

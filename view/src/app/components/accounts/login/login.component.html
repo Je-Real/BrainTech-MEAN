@@ -1,0 +1,43 @@
+<section class="hero-wrap-c pt-5" data-stellar-background-ratio="0.5">
+  <div class="overlay-c"></div>
+  <div class="overlay-d"></div>
+  <div class="container">
+    <div class="row description align-items-center justify-content-center">
+      <div class="col-md-8 text-center">
+        <div class="text">
+          <div class="bg-primary w-75 mx-auto rounded d-lg-block d-none mt-7">
+            <h1 class="text-white font-weight-lighter display-4">Inicio de sesión</h1>
+          </div>
+          <div class="bg-primary mx-auto rounded d-lg-none d-block">
+            <h1 class="text-white font-weight-lighter font-6x">Inicio de sesión</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<form #formLogin="ngForm" (ngSubmit)="login(formLogin)" class="text-center" id="formLogin">
+
+  <div class="form-group">
+    <p class="font-1_25x">Usuario</p>
+    <input type="email" class="form-ctrl" name="user" ngModel autofocus>
+
+    <p class="font-1_25x mt-3">Contraseña</p>
+    <input type="password" class="form-ctrl" name="pass" ngModel>
+  </div>
+
+  <button type="submit" class="btn px-3 btn-danger font-1_25x" id="btnLogin">Entrar</button>
+
+</form>
+
+<p class="text-center mt-4">
+  ¿Aun no estas registrado? <a routerLink="/register">¡Registrate aqui!</a>
+</p>
+
+<div id="ftco-loader" class="show fullscreen">
+  <svg class="circular" width="48px" height="48px">
+    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+  </svg>
+</div>

@@ -1,0 +1,135 @@
+<section class="hero-wrap pt-5" style="background-image: url(assets/images/bg-code.jpg);"
+	data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row description align-items-center justify-content-center">
+			<div class="col-md-8 text-center">
+				<div class="text">
+					<div class="bg-primary w-75 mx-auto rounded-lg">
+						<h1 class="text-white font-weight-lighter display-1">Tech Blog</h1>
+					</div>
+					<div class="bg-light w-100 mx-auto rounded-lg">
+						<h3 class="text-black font-weight-lighter mb-5">Compartamos juntos.</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-section-2" id="navigationTabs">
+	<div class="container">
+		<div class="row mx-auto">
+			<div class="col-12 py-4 text-justify">
+				<h5 class="text-center font-weight-light my-4">
+					Blog del equipo de <span class="text-primary">BrainTech</span> donde se pueden encontrar cosas de la
+					vida cotidiana, curiosidades, diversión y demás cosas en todas las entradas.
+				</h5>
+
+				<div *ngFor="let post of postService.posts">
+					<div class="col-12 mt-4 bg-card card-post">
+						<a class="a-none col-12 col-md-4" routerLink="/soon">
+							<div class="text-center mx-auto my-2 w-50">
+								<img src="{{ post.imgCabecera }}" alt="{{post.imgCabecera}}">
+							</div>
+							<div class="w-75 mt-2 mx-auto">
+								<h3 class="text-center text-primary">{{post.titulo}}</h3>
+								<p class="text-black font-1_5x">
+									{{post.contenido.substring(0, 75)}}...
+								</p>
+								<p class="text-black">
+									Publicado por: <span class="text-purple">{{post.autor}}</span> <br>
+									<span class="text-black font-0_85x text-right">Publicado el {{post.fecha.toString().substring(0,10)}}</span>
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-12 mt-4 bg-card">
+					<a class="a-none col-12 col-md-4" routerLink="/soon">
+						<div class="text-center mx-auto my-2 w-50">
+							<img src="assets/images/img-corredora.jpg" alt="img-corredora">
+						</div>
+						<div class="w-75 mt-2 mx-auto">
+							<h3 class="text-center text-primary">Todos saludables</h3>
+							<p class="text-black font-1_5x">
+								Hola, traigo de vuelta formas de ser cada vez más y más saludables. Pequeñas
+								rutinas de ejercicio, platillos sanamente deliciosos...
+							</p>
+							<p class="text-black">
+								Publicado por: 🐱‍👤alfre_004 <br>
+								<span class="text-black font-0_85x text-right">Publicado el 19/03/2020</span>
+							</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 mt-4 bg-card">
+					<a class="a-none col-12 col-md-4" routerLink="/soon">
+						<div class="text-center mx-auto my-2 w-50">
+							<img src="assets/images/image-3.jpg" alt="img-viajes">
+						</div>
+						<div class="w-75 mt-2 mx-auto">
+							<h3 class="text-center text-primary">Viajes, mi experiencia personal</h3>
+							<p class="text-black font-1_5x">
+								He viajado mucho últimamente, y ha sido fabuloso andar de aquí para allá.
+								Pero lo más impresionante es...
+							</p>
+							<p class="text-black">
+								Publicado por: _Pedro!👽 <br>
+								<span class="text-black font-0_85x text-right">Publicado el 17/03/2020</span>
+							</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 mt-4 bg-card">
+					<a class="a-none col-12 col-md-4" routerLink="/soon">
+						<div class="text-center mx-auto my-2 w-50">
+							<img src="assets/images/image-2.jpg" alt="img-moda">
+						</div>
+						<div class="w-75 mt-2 mx-auto">
+							<h3 class="text-center text-primary">¿Moda? ¡Lo que te acomoda!</h3>
+							<p class="text-black font-1_5x">
+								Te daré algunos consejos en la hora de maquillarte, vestirte y demás,
+								pero no debemos de olvidar...
+							</p>
+							<p class="text-black">
+								Publicado por: Alli✨ <br>
+								<span class="text-black font-0_85x text-right">Publicado el 16/03/2020</span>
+							</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-12 mt-4 bg-card">
+					<a class="a-none col-12 col-md-4" routerLink="/soon">
+						<div class="text-center mx-auto my-2 w-50">
+							<img src="assets/images/image-1.jpg" alt="img-fotos">
+						</div>
+						<div class="w-75 mt-2 mx-auto">
+							<h3 class="text-center text-primary">Como tomar fotos "cheveres"</h3>
+							<p class="text-black font-1_5x">
+								Hola visitante, ¿Quiries saber como yo hago para tomar fotos y que
+								parezcan lo mas profesionales que se pueda con un movil? Entonces...
+							</p>
+							<p class="text-black">
+								Publicado por: Os🌌 <br>
+								<span class="text-black font-0_85x text-right">Publicado el 14/03/2020</span>
+							</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ************************* ToolBar ************************* -->
+
+<div id="ftco-loader" class="show fullscreen">
+	<svg class="circular" width="48px" height="48px">
+		<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	</svg>
+</div>
