@@ -32,6 +32,8 @@ La estructura de la aplicacion puede ser observada en la siguiente imagen
   <img src="https://github.com/j-3073/BrainTech-MEAN/blob/cbf97464e7b0307733fb770cc43a33ae0e873237/docs/site%20diagram-min.png" alt="Diagrama de sitio"/>
 </p>
 
+## Vista de páginas web
+
 <p align="center">
   <img src="https://github.com/j-3073/BrainTech-MEAN/blob/cbf97464e7b0307733fb770cc43a33ae0e873237/docs/home%20page-min.png" alt="Pagina de inicio"/>
 </p>
